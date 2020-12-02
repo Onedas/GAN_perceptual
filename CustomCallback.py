@@ -4,7 +4,7 @@ import wandb
 
 
 def output2wandbImage(output):
-	return wandb.Image(output[0].detach().cpu().numpy().transpose((1,2,0)))
+	return wandb.Image(output.detach().cpu().numpy().transpose((1,2,0)))
 
 
 class ImagePredictionLogger(Callback):
