@@ -17,7 +17,7 @@ class ImagePredictionLogger(Callback):
 		self.val_data = val_data
 
 
-	def on_validation_epoch_end(self, trainer, pl_moudle):
+	def on_train_epoch_end(self, trainer, pl_moudle):
 
 		for idx, (A,B) in enumerate(self.val_data):
 			A=A.to(pl_moudle.device)
