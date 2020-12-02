@@ -4,7 +4,7 @@ import wandb
 
 
 def output2wandbImage(output):
-	return wandb.Image(output[0].cpu().numpy().transpose((1,2,0)))
+	return wandb.Image(output[0].detach().cpu().numpy().transpose((1,2,0)))
 
 
 class ImagePredictionLogger(Callback):
@@ -17,8 +17,7 @@ class ImagePredictionLogger(Callback):
 		self.val_data = val_data
 
 
-	def on_train_epoch_start(self, trainer, pl_moudle):
-
+	def on_validation_epoch_end(self, trainer, pl_moudle):
 		for idx, (A,B) in enumerate(self.val_data):
 			A=A.to(pl_moudle.device)
 			B=B.to(pl_moudle.device)

@@ -72,7 +72,9 @@ class myModel(pl.LightningModule):
 
 			self.log('loss_D',loss_D)
 			return loss_D
-
+	
+	def validation_step(self, batch, batch_idx):
+		pass
 
 if __name__ == "__main__":
 	from config import get_arguments

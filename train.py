@@ -28,5 +28,5 @@ if __name__ == "__main__":
 					  callbacks=[ImagePredictionLogger(valid_loader)])
 	
 	# train
-	trainer.fit(model, train_loader)
+	trainer.fit(model, train_loader,valid_loader)
 	print('train done')
