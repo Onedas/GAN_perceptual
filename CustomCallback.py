@@ -22,8 +22,9 @@ class ImagePredictionLogger(Callback):
 			A=A.to(pl_moudle.device)
 			B=B.to(pl_moudle.device)
 
-			fake_B = pl_moudle.forward(A)
+			batch_fake_B = pl_moudle.forward(A)
 
-			trainer.logger.experiment.log({
-				"fake_B{}".format(idx) : output2wandbImage(fake_B),
-				})
+			for batch, fake_B in enumerate(batch_fake_B):
+				trainer.logger.experiment.log({
+					"fake_B{:02}{:02}".format(idx) : output2wandbImage(fake_B),
+					})
