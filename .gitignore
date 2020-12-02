@@ -1,0 +1,19 @@
+# ignore data files
+data/*
+
+# ignore wandb files
+wandb
+wandb/*
+
+# ignore cyclegan_lightning folder
+cyclegan_lightning
+cyclegan_lightning/*
+
+#
+perceptualgan
+perceptualgan/*
+#
+__pycache__
+__pycache__/*
+.idea
+.idea/*
