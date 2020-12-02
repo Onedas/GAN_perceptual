@@ -11,15 +11,15 @@ def pretrainedVGG(opt):
 	"""
 	nth_feature = opt.perceptual_depth-1
 	layer_num=[0,2,5,7,19,12,14,17,19,21,24,26,28]
-
 	n = layer_num[nth_feature]
 	vgg16 = models.vgg16(pretrained=True)
-	vgg16_conv_4_3 = nn.Sequential(*list(vgg16.children())[0][:n+1])
+	vgg16_conv = nn.Sequential(*list(vgg16.children())[0][:n+1])
 
-	for param in vgg16_conv_4_3.parameters():
+	for param in vgg16_conv.parameters():
 		param.requires_grad = False
 
-	return vgg16_conv_4_3
+	print("load vgg16 network")
+	return vgg16_conv
 
 def getG(opt):
 

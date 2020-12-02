@@ -26,5 +26,5 @@ class ImagePredictionLogger(Callback):
 
 			for batch, fake_B in enumerate(batch_fake_B):
 				trainer.logger.experiment.log({
-					"fake_B{:02}{:02}".format(idx) : output2wandbImage(fake_B),
+					"fake_B{:02}{:02}".format(idx,batch) : output2wandbImage(fake_B),
 					})
