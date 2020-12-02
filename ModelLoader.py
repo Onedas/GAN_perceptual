@@ -6,9 +6,15 @@ from models.patchDiscriminator import PatchDiscriminator
 
 import torchvision.models as models
 
-def pretrainedVGG():
+def pretrainedVGG(opt):
+	"""
+	"""
+	nth_feature = opt.perceptual_depth-1
+	layer_num=[0,2,5,7,19,12,14,17,19,21,24,26,28]
+
+	n = layer_num[nth_feature]
 	vgg16 = models.vgg16(pretrained=True)
-	vgg16_conv_4_3 = nn.Sequential(*list(vgg16.children())[0][:22])
+	vgg16_conv_4_3 = nn.Sequential(*list(vgg16.children())[0][:n+1])
 
 	for param in vgg16_conv_4_3.parameters():
 		param.requires_grad = False
@@ -114,4 +120,4 @@ def model_initalize(model, init_type ='xavier', init_gain=0.02):
 	model.apply(initalize_func)
 
 if __name__ == "__main__":
-	print(pretrainedVGG(None))
+	print(models.vgg16(pretrained=True))

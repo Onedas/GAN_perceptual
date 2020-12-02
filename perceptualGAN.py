@@ -15,7 +15,7 @@ class myModel(pl.LightningModule):
 		self.G = getG(opt).to(self.device)
 		self.D = getD(opt).to(self.device)
 
-		self.featureModel = pretrainedVGG().to(self.device)
+		self.featureModel = pretrainedVGG(self.opt).to(self.device)
 
 	def forward(self, x):
 		return self.G(x)

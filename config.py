@@ -20,14 +20,12 @@ def get_arguments():
     parser.add_argument('--initalize', action='store', help='initalize type (normal|xavier|kaiming)', default='xavier')
     parser.add_argument('--init_gain', action='store', help='initalize gain param', default=0.02, type=float)
     parser.add_argument('--paddingtype', action='store', help='zero|', default='zero')
+    parser.add_argument('--perceptual_depth', action='store', help='model depths for perceptual loss', default=10, type=int)
     ## G
     parser.add_argument('--G', action='store', help='resnet', default='resnet')
     parser.add_argument('--G_filter', action='store', help="the number of G's filter", default=64, type=int)
     parser.add_argument('--G_blocks', action='store', help="the number of resnet's blocks", default=9, type=int)
     parser.add_argument('--G_mode', action='store', help="(vanilla|lsgan)", default='lsgan')
-    parser.add_argument('--lambda_id', action='store', help='lambda of identity loss', default=10.0, type=float)
-    parser.add_argument('--lambda_cycle', action='store', help='lambda of cycle loss', default=5.0, type=float)
-
     ## D
     parser.add_argument('--D_filter', action='store', help="the number of D's filter", default=64, type=int)    
     parser.add_argument('--D_layers', action='store', help="the number of D's layers", default=3, type=int)
