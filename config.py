@@ -29,6 +29,9 @@ def get_arguments():
     ## D
     parser.add_argument('--D_filter', action='store', help="the number of D's filter", default=64, type=int)    
     parser.add_argument('--D_layers', action='store', help="the number of D's layers", default=3, type=int)
+
+    #
+    parser.add_argument('--percep_lambda', action='store', help="the number of perceptual coeff", default=0.002, type=float)
     
     # optimizer
     parser.add_argument('--lr', action='store', help='learning rate', default=0.0002, type=float)
