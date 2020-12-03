@@ -45,7 +45,7 @@ class myModel(pl.LightningModule):
 
 			# perceptual loss
 			real_feature = self.featureModel(B)
-			fake_feature = self.featureModel(fake_B.detach())
+			fake_feature = self.featureModel(fake_B)
 
 			loss_percep = F.l1_loss(fake_feature, real_feature) * self.opt.percep_lambda
 
@@ -60,7 +60,7 @@ class myModel(pl.LightningModule):
 		if optimizer_idx == 1:
 			fake_B = self.G(A)
 			D_fake_B = self.D(fake_B)
-			D_B = self.D(B.detach())
+			D_B = self.D(B)
 
 			zeros = torch.zeros_like(D_B).to(self.device)
 			ones = torch.ones_like(D_B).to(self.device)
