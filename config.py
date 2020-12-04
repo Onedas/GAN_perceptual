@@ -25,7 +25,6 @@ def get_arguments():
     parser.add_argument('--G', action='store', help='resnet', default='resnet')
     parser.add_argument('--G_filter', action='store', help="the number of G's filter", default=64, type=int)
     parser.add_argument('--G_blocks', action='store', help="the number of resnet's blocks", default=9, type=int)
-    parser.add_argument('--G_mode', action='store', help="(vanilla|lsgan)", default='lsgan')
     ## D
     parser.add_argument('--D_filter', action='store', help="the number of D's filter", default=64, type=int)    
     parser.add_argument('--D_layers', action='store', help="the number of D's layers", default=3, type=int)

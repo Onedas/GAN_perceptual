@@ -18,6 +18,8 @@ if __name__ == "__main__":
 	# logger
 	if opt.use_wandb:
 		logger = WandbLogger(project=opt.wandb_project, offline=opt.offline)
+		logger.watch(model)
+		logger.log_hyperparams(opt)
 	else:
 		logger = None
 
