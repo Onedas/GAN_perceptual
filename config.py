@@ -7,6 +7,7 @@ def get_arguments():
     parser.add_argument('--save_path', action='store',help='model save path', default='trained_model/')
     parser.add_argument('--use_wandb', action='store', help='use wandb for watch', default=True, type=bool)
     parser.add_argument('--wandb_project', action='store', help='wandb project name', default='perceptualgan')
+    parser.add_argument('--wandb_name', action='store', help='wandb board name', default='')
     parser.add_argument('--offline', action='store', help='wandb offline mode', default=False, type=bool)
     #data
     parser.add_argument('--num_traindata', action='store', help='the number of train data', default=1000, type=int)
