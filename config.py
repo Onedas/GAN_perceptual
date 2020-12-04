@@ -22,6 +22,8 @@ def get_arguments():
     parser.add_argument('--init_gain', action='store', help='initalize gain param', default=0.02, type=float)
     parser.add_argument('--paddingtype', action='store', help='zero|', default='zero')
     parser.add_argument('--perceptual_depth', action='store', help='model depths for perceptual loss', default=10, type=int)
+    parser.add_argument('--use_percep_activation', action='store', help='perceptual model with activation', default=False, type=bool)
+
     ## G
     parser.add_argument('--G', action='store', help='resnet', default='resnet')
     parser.add_argument('--G_filter', action='store', help="the number of G's filter", default=64, type=int)

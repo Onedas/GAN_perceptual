@@ -13,7 +13,10 @@ def pretrainedVGG(opt):
 	layer_num=[0,2,5,7,19,12,14,17,19,21,24,26,28]
 	n = layer_num[nth_feature]
 	vgg16 = models.vgg16(pretrained=True)
-	vgg16_conv = nn.Sequential(*list(vgg16.children())[0][:n+1])
+	if opt.use_percep_activation:
+		vgg16_conv = nn.Sequential(*list(vgg16.children())[0][:n+2])
+	else:
+		vgg16_conv = nn.Sequential(*list(vgg16.children())[0][:n+1])
 
 	for param in vgg16_conv.parameters():
 		param.requires_grad = False
@@ -121,3 +124,18 @@ def model_initalize(model, init_type ='xavier', init_gain=0.02):
 
 if __name__ == "__main__":
 	print(models.vgg16(pretrained=True))
+
+	def pretrainedVGG(l):
+		"""
+		"""
+		nth_feature = l-1
+		layer_num=[0,2,5,7,19,12,14,17,19,21,24,26,28]
+		n = layer_num[nth_feature]
+		vgg16 = models.vgg16(pretrained=True)
+		vgg16_conv = nn.Sequential(*list(vgg16.children())[0][:n+2])
+
+		for param in vgg16_conv.parameters():
+			param.requires_grad = False
+
+		print("load vgg16 network")
+		return vgg16_conv
