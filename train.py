@@ -17,12 +17,14 @@ if __name__ == "__main__":
 
 	# logger
 	if opt.use_wandb:
-		logger = WandbLogger(project=opt.wandb_project, offline=opt.offline)
+		if not opt.wandb_name == "":
+			logger = WandbLogger(name=opt.wandb_name, project=opt.wandb_project, offline=opt.offline)
+		else:
+			logger = WandbLogger(project=opt.wandb_project, offline=opt.offline)
 		logger.watch(model)
 		logger.log_hyperparams(opt)
 
-		if not opt.wandb_name == "":
-			logger.name = opt.wandb_name
+		
 	else:
 		logger = None
 
