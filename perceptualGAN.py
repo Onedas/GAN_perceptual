@@ -48,6 +48,8 @@ class myModel(pl.LightningModule):
 			fake_feature = self.featureModel(fake_B)
 			
 			loss_percep = F.l1_loss(fake_feature, real_feature) * self.opt.percep_lambda
+
+			loss_id = F.l1_loss(self.G(B), B) * self.opt.id_lambda
 			
 			loss_G = loss_gan + loss_percep
 
