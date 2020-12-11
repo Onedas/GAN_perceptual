@@ -34,7 +34,7 @@ def get_arguments():
 
     #
     parser.add_argument('--percep_lambda', action='store', help="the number of perceptual coeff", default=0.002, type=float)
-    parser.add_argument('--id_lambda', action='store', help="the number of identical coeff if don't want, 0", default=0.02, type=float)
+    parser.add_argument('--id_lambda', action='store', help="the number of identical coeff if don't want, 0", default=0.2, type=float)
     
     
     # optimizer
