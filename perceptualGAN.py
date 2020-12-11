@@ -61,7 +61,7 @@ class myModel(pl.LightningModule):
 		# train D
 		if optimizer_idx == 1:
 			fake_B = self.G(A)
-			D_fake_B = self.D(fake_B)
+			D_fake_B = self.D(fake_B.detach())
 			D_B = self.D(B)
 
 			zeros = torch.zeros_like(D_B).to(self.device)
